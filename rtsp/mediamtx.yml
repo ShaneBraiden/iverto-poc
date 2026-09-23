@@ -1,0 +1,11 @@
+# Minimal MediaMTX config: RTSP only, any path can be published and read.
+logLevel: info
+rtsp: yes
+rtspAddress: :8554
+rtmp: no
+hls: no
+webrtc: no
+srt: no
+moq: no
+paths:
+  all_others:

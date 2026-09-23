@@ -1,0 +1,31 @@
+# Built-in video streams. Every stream listed here runs at once, each with its own
+# zones and counters; the dashboard lists them all and any one can be opened for details.
+# "file" plays a local clip paced like a live camera;
+# "rtsp" reads the same clip re-served by MediaMTX (run rtsp/serve.ps1 first);
+# "web" streams a public page (YouTube live, or anything yt-dlp supports); a plain video loops.
+# File paths are relative to the project root. "zones" is a file in config/
+# (default zones-<name>.json): each camera sees a different scene.
+# Streams added from the dashboard are stored separately in config/streams.json.
+sources:
+  file:
+    label: Lobby clip
+    kind: file
+    uri: data/samples/people-walking.mp4
+    zones: zones.json
+  rtsp:
+    label: RTSP camera
+    kind: rtsp
+    uri: rtsp://localhost:8554/cam1
+    zones: zones.json   # same scene as the file source, re-served by MediaMTX
+  web:
+    label: Abbey Road
+    kind: web
+    uri: https://www.youtube.com/watch?v=zMCea32gpmg   # EarthCam live: Abbey Road crossing, London
+    zones: zones-web.json
+
+model: auto          # auto = yolo11s on GPU, yolo11n on CPU; or yolo11n.pt / yolo11s.pt / yolo11m.pt
+imgsz: 640           # inference resolution
+conf: 0.15           # low on purpose: ByteTrack uses weak detections to keep tracks alive
+max_width: 1280      # frames are downscaled to this width before processing
+wait_window_s: 120   # averaging window for Little's Law (L and lambda)
+retention_hours: 24  # metric/event history kept in SQLite

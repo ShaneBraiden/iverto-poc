@@ -1,0 +1,10 @@
+backend/.venv/
+backend/models/
+__pycache__/
+frontend/node_modules/
+frontend/dist/
+rtsp/bin/
+data/*.db
+data/*.mp4
+backend/config/streams.json
+data/uploads/

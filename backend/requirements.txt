@@ -1,0 +1,11 @@
+# PyTorch: install the CUDA build first on NVIDIA machines, e.g.
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+ultralytics>=8.3
+supervision>=0.30
+trackers>=2.0
+lap
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pyyaml
+imageio-ffmpeg  # bundled ffmpeg binary for rtsp/serve.ps1
+yt-dlp[default]  # web sources: resolves a live page to its stream URL (uses Node for YouTube)
